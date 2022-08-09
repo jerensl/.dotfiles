@@ -1,3 +1,8 @@
 [user]
-	name = Jerens Lensun
+	name = jerensl
 	email = 54782057+jerensl@users.noreply.github.com
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+[ghq]
+  root = ~/repos
+  root = ~/go/src
