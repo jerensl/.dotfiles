@@ -8,11 +8,8 @@ end
 starship init fish | source
 
 # set the workspace path
-set -x GOPATH $HOME/go
-set -x GO111MODULE on
-
-# add the go bin path to be able to execute our programs
-set -x PATH $PATH /usr/local/go/bin $GOPATH/bin
+set -x -U GOPATH $HOME/.asdf/shims/go
+set -x GOPATH $HOME/.asdf/shims/go/workspace
 
 # direnv config
 direnv hook fish | source
@@ -50,3 +47,24 @@ set -U fish_pager_color_completion    normal
 set -U fish_pager_color_description   yellow
 set -U fish_pager_color_prefix        'white' '--bold' '--underline'
 set -U fish_pager_color_progress      'brwhite' '--background=cyan'
+# pnpm
+set -gx PNPM_HOME "/home/jerensl/.local/share/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end
+
+# Created by `pipx` on 2024-10-10 03:24:03
+set PATH $PATH /home/jerensl/.local/bin
+
+# Check if SSH agent is running
+if not set -q SSH_AUTH_SOCK
+    echo "Starting ssh-agent..."
+    eval (ssh-agent -c)
+end
+
+# Add your SSH key
+ssh-add -l >/dev/null 2>&1; or ssh-add ~/.ssh/github_personal
+
+source /opt/asdf-vm/asdf.fish
+source ~/.asdf/plugins/golang/set-env.fish

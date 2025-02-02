@@ -6,3 +6,10 @@
 [ghq]
   root = ~/repos
   root = ~/go/src
+[core]
+	editor = /usr/bin/vim
+	pager = cat
+[pull]
+	rebase = false
+[rebase]
+	autoStash = true

@@ -53,7 +53,10 @@ style = "bright-white"
 disabled = false
 
 [username]
+style_root = 'black bold'
 style_user = "red bold"
+format = 'user: [$user]($style) '
+disabled = false
 show_always = true
 
 [aws]
