@@ -2,6 +2,11 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
+# Clear default fish greeting
+function fish_greeting
+    fastfetch
+end
+
 # ~/.config/fish/config.fish
 
 # starship config
