@@ -21,6 +21,20 @@ if type -q exa
   alias lla "ll -a"
 end
 
+# ASDF configuration code
+if test -z $ASDF_DATA_DIR
+    set _asdf_shims "$HOME/.asdf/shims"
+else
+    set _asdf_shims "$ASDF_DATA_DIR/shims"
+end
+
+# Do not use fish_add_path (added in Fish 3.2) because it
+# potentially changes the order of items in PATH
+if not contains $_asdf_shims $PATH
+    set -gx --prepend PATH $_asdf_shims
+end
+set --erase _asdf_shims
+
 set -U fish_color_autosuggestion      brblack
 set -U fish_color_cancel              -r
 set -U fish_color_command             brgreen
@@ -64,7 +78,7 @@ if not set -q SSH_AUTH_SOCK
 end
 
 # Add your SSH key
-ssh-add -l >/dev/null 2>&1; or ssh-add ~/.ssh/github_personal
+# ssh-add -l >/dev/null 2>&1; or ssh-add ~/.ssh/github_personal
 
-source /opt/asdf-vm/asdf.fish
-source ~/.asdf/plugins/golang/set-env.fish
+# source /opt/asdf-vm/asdf.fish
+# source ~/.asdf/plugins/golang/set-env.fish
