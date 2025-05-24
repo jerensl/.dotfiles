@@ -7,12 +7,12 @@ This dotfiles is specific for Arch Linux
 1. Clone the repo
 
 ```
-git clone git@github.com:jerensl/.dotfiles.git
+git clone https://github.com/jerensl/.dotfiles.git
 ```
 
 2. Symlink the configuration for example
 ```
-ln -s $HOME/.dotfiles/.config/fish $HOME/.config/fish
+ln -s $HOME/.dotfiles/.config/fish/ $HOME/.config
 ```
 
 3. Install direnv for managing environment
