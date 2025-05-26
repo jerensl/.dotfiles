@@ -82,6 +82,22 @@ if not set -q SSH_AUTH_SOCK
     eval (ssh-agent -c)
 end
 
+# Obsidian Config
+# D-Bus session setup (for Flatpak apps like Obsidian)
+if not set -q DBUS_SESSION_BUS_ADDRESS
+    eval (dbus-launch | sed -n 's/^DBUS_SESSION_BUS_ADDRESS=/set -x DBUS_SESSION_BUS_ADDRESS /p; s/^DBUS_SESSION_BUS_PID=/set -x DBUS_SESSION_BUS_PID /p')
+end
+
+# Ensure Wayland session variables are correctly set
+set -x XDG_SESSION_TYPE wayland
+set -x GDK_BACKEND wayland
+set -x QT_QPA_PLATFORM wayland
+
+# Optional: set the correct Wayland display if not already set
+if not set -q WAYLAND_DISPLAY
+    set -x WAYLAND_DISPLAY wayland-1  # or wayland-0 depending on your system
+end
+
 # Add your SSH key
 # ssh-add -l >/dev/null 2>&1; or ssh-add ~/.ssh/github_personal
 
