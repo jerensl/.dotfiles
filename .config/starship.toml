@@ -12,6 +12,7 @@ $rust\
 $golang\
 $php\
 [](fg:#212736 bg:#1d2230)\
+$battery\
 $time\
 [ ](fg:#1d2230)\
 \n$character"""
@@ -62,3 +63,19 @@ disabled = false
 time_format = "%R" # Hour:Minute Format
 style = "bg:#1d2230"
 format = '[[  $time ](fg:#a0a9cb bg:#1d2230)]($style)'
+
+[battery]
+full_symbol = '🔋 '
+charging_symbol = '⚡️ '
+discharging_symbol = '💀 '
+disabled = false
+
+[[battery.display]] # 'bold red' style and discharging_symbol when capacity is between 0% and 10%
+threshold = 10
+style = 'bold red'
+
+[[battery.display]] # 'bold yellow' style and 🔌 symbol when capacity is between 10% and 30%
+threshold = 35
+style = 'bold yellow'
+discharging_symbol = '🔌 '
+

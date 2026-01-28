@@ -7,6 +7,9 @@ function fish_greeting
     fastfetch
 end
 
+function battery
+    upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -E 'state|percentage|time'
+end
 # ~/.config/fish/config.fish
 
 # starship config
@@ -17,8 +20,7 @@ set -x -U GOPATH $HOME/.asdf/shims/go
 set -x GOPATH $HOME/.asdf/shims/go/workspace
 
 # direnv config
-direnv hook fish | source
-direnv export fish | source
+eval (direnv hook fish)
 
 # exac for list directory
 if type -q exa
